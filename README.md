@@ -1,5 +1,4 @@
-# Fullscreen clock for esp32
-Fullscreen 7 segment LED clock with date for esp32 + FabGL<br>
+# Fullscreen 7 segment LED clock with date for esp32 (Powered by FabGL)
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/y1z5M73dnmE/0.jpg)](https://www.youtube.com/watch?v=y1z5M73dnmE)
 
 # How to install it
