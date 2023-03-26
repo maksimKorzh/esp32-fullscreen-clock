@@ -4,13 +4,17 @@
 #include <WiFi.h>
 #include "time.h"
 
-const char* ssid       = "YOUR_SSID";
-const char* password   = "YOUR_PASSWORD";
+const char* ssid       = "BF";
+const char* password   = "49724314";
 const char* ntpServer = "pool.ntp.org";
-const long  gmtOffset_sec = 7200; // GMT+2
-const int   daylightOffset_sec = 3600;
 fabgl::VGAController DisplayController;
 fabgl::Canvas        canvas(&DisplayController);
+
+void setTimezone(String timezone){
+  Serial.printf("  Setting Timezone to %s\n",timezone.c_str());
+  setenv("TZ",timezone.c_str(),1);  //  Now adjust the TZ.  Clock settings are adjusted to show the new local time
+  tzset();
+}
 
 void printLocalTime()
 {
@@ -38,7 +42,8 @@ void setup()
       delay(500);
       Serial.print(".");
   } Serial.println(" CONNECTED");
-  configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
+  configTime(0, 0, ntpServer);
+  setTimezone("EET-2EEST,M3.5.0/3,M10.5.0/4");
   delay(1000);
   WiFi.disconnect(true);
   WiFi.mode(WIFI_OFF);
